@@ -4,6 +4,11 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var url = require('url');
 
+// post create user
+// post update user
+// post delete user
+// get user
+
 router.post('/user',bodyParser.json(), function(req, res, next) {
     let user = new User(req.body);
     user.save(function(err,user){

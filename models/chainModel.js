@@ -5,6 +5,7 @@ var chainSchema = new Schema({
     name: String,
     type: String,
     parent: String,
+    members: Array,
     admins: Array
 
 });
