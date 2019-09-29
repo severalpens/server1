@@ -20,8 +20,10 @@ router.post('/user',bodyParser.json(), function(req, res, next) {
 });
 
 router.get('/',(req,res) => {
-  res.send("You've reached /api/user!")
+  res.send("You've  reached /api/user!")
 })
 
-
+router.get('/login',(req,res) => {
+  res.send({username: 'loginWorked', password: 'loginWorked1', valid: true});
+})
 module.exports = router;

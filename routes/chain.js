@@ -11,7 +11,7 @@ router.get('/',bodyParser.json(), function(req, res, next) {
   query.setOptions({ lean : true });
   query.collection(Chain.collection);
   query.where('name').equals('sport');
-  query.where('type').equals('goup');
+  query.where('type').equals('group');
   query.exec((err,body) => {
     res.send(body)
   });
@@ -30,14 +30,10 @@ router.post('/',bodyParser.json(), function(req, res, next) {
 
 //delete
 router.delete('/',bodyParser.json(), function(req, res, next) {
-  const query = Chain.find(); // `query` is an instance of `Query`
-  query.setOptions({ lean : true });
-  query.collection(Chain.collection);
-  query.where('name').equals('sport');
-  query.where('type').equals('goup');
-  query.remove((err,body) => {
+  let chain = new Chain(req.body);
+  chain.remove((err,body) => {
     res.send(body)
-  });
+  })
 });
 
 
