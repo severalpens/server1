@@ -9,7 +9,7 @@ var url = require('url');
 // post delete user
 // get user
 
-router.post('/user',bodyParser.json(), function(req, res, next) {
+router.post('/register',bodyParser.json(), function(req, res, next) {
     let user = new User(req.body);
     user.save(function(err,user){
       if(err){
@@ -19,11 +19,29 @@ router.post('/user',bodyParser.json(), function(req, res, next) {
     })
 });
 
-router.get('/',(req,res) => {
-  res.send("You've  reached /api/user!")
-})
+router.get('/namecheck',bodyParser.urlencoded({ extended: false }),(req,res) => {
+  User.findOne({username: req.body.username},
+   (err,user) => {
+     if(user == null){
+       console.log('user == null');
+       res.send(true);
+     }else{
+       console.log(user);
+       res.send(false);
+     }
+   })
+ })
 
-router.get('/login',(req,res) => {
-  res.send({username: 'loginWorked', password: 'loginWorked1', valid: true});
-})
-module.exports = router;
+ router.post('/login',bodyParser.json(),(req,res) => {
+  User.findOne({username: req.body.username, password: req.body.password},
+   (err,user) => {
+     if(user == null){
+       console.log('user == null');
+       res.send({username: '', password: '', valid: false});
+     }else{
+       console.log(user);
+       res.send(user);
+     }
+   })
+ })
+ module.exports = router;
