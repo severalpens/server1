@@ -1,4 +1,4 @@
-var Chain = require('../models/chainModel');
+var Chain = require('../mongooseModels/chainModel');
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
