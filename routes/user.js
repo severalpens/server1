@@ -13,9 +13,11 @@ router.post('/register',bodyParser.json(), function(req, res, next) {
     let user = new User(req.body);
     user.save(function(err,user){
       if(err){
-        return res.status(400).json(err)
+        user.valid = false;
+      //  return res.status(400).json(err)
       }
-      res.status(200).json(user)
+        res.send(user);
+      //res.status(200).json(user)
     })
 });
 
