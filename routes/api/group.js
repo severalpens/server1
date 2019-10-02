@@ -4,17 +4,17 @@ var bodyParser = require('body-parser');
 var url = require('url');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var groupSchema = new Schema({
+var dbSchema = new Schema({
   id:             Number,
   name:           String,
   type:           String,
   parent:         String
 });
-var Group = mongoose.model('Group', groupSchema);
+var Document = mongoose.model('dbcollection', dbSchema, 'dbcollection');
 
 // insert or update (upsert)
 router.post('/',bodyParser.json(), function(req, res, next) {
-    let group = new Group(req.body);
+    let group = new Document(req.body);
     group.save(function(err,group){
       if(err){
         return res.status(400).json(err)
@@ -25,9 +25,9 @@ router.post('/',bodyParser.json(), function(req, res, next) {
 
 //read
 router.get('/',bodyParser.json(), function(req, res, next) {
-  const query = Group.find(); // `query` is an instance of `Query`
+  const query = Document.find(); // `query` is an instance of `Query`
   query.setOptions({ lean : true });
-  query.collection(Group.collection);
+  query.collection(Document.collection);
   query.where('name').equals('sport');
   query.where('type').equals('group');
   query.exec((err,body) => {
@@ -38,7 +38,7 @@ router.get('/',bodyParser.json(), function(req, res, next) {
 
 //delete
 router.delete('/',bodyParser.json(), function(req, res, next) {
-  let group = new Group(req.body);
+  let group = new Document(req.body);
   group.save(function(err,group){
     if(err){
       return res.status(400).json(err)
