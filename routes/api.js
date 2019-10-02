@@ -1,20 +1,20 @@
 var express = require('express');
 var router = express.Router();
-var chainRouter = require('./chain') 
-var siteRouter = require('./site') 
-var groupRouter = require('./group') 
-var channelRouter = require('./channel') 
-var memberRouter = require('./member') 
-var messageRouter = require('./message') 
-var productRouter = require('./product') 
+var groupRouter = require('./api/group') 
+// var chainRouter = require('./chain') 
+// var siteRouter = require('./api/site') 
+// var channelRouter = require('./api/channel') 
+// var memberRouter = require('./api/member') 
+// var messageRouter = require('./api/message') 
+// var productRouter = require('./api/product') 
 
-router.use('/chain', chainRouter);
-router.use('/site', userRouter);
-router.use('/group', userRouter);
-router.use('/channel', userRouter);
-router.use('/member', userRouter);
-router.use('/message', userRouter);
-router.use('/product', userRouter);
+router.use('/group', groupRouter);
+// router.use('/chain', chainRouter);
+// router.use('/site', siteRouter);
+// router.use('/channel', channelRouter);
+// router.use('/member', memberRouter);
+// router.use('/message', messageRouter);
+// router.use('/product', productRouter);
 
 router.get('/',(req,res) => {
     res.send("You've reached /api!")

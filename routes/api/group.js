@@ -3,14 +3,25 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var url = require('url');
 var mongoose = require('mongoose');
-var Group = mongoose.model('Group', new mongoose.Schema({
+var Schema = mongoose.Schema;
+var groupSchema = new Schema({
   id:             Number,
   name:           String,
   type:           String,
-  parent:         String,
-  members:        Object,
-}));
+  parent:         String
+});
+var Group = mongoose.model('Group', groupSchema);
 
+// insert or update (upsert)
+router.post('/',bodyParser.json(), function(req, res, next) {
+    let group = new Group(req.body);
+    group.save(function(err,group){
+      if(err){
+        return res.status(400).json(err)
+      }
+      res.status(200).json(group)
+    })
+});
 
 //read
 router.get('/',bodyParser.json(), function(req, res, next) {
@@ -24,16 +35,6 @@ router.get('/',bodyParser.json(), function(req, res, next) {
   });
   });
 
-// insert or update (upsert)
-router.post('/',bodyParser.json(), function(req, res, next) {
-    let group = new Group(req.body);
-    group.save(function(err,group){
-      if(err){
-        return res.status(400).json(err)
-      }
-      res.status(200).json(group)
-    })
-});
 
 //delete
 router.delete('/',bodyParser.json(), function(req, res, next) {
