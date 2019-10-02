@@ -4,13 +4,25 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var url = require('url');
 var mongoose = require('mongoose');
-var Message = mongoose.model('Member', new mongoose.Schema({
-  id:         Number,
-  timestamp:  Number,
-  author:     String,
-  value:      String,
-  visible:    Boolean,
-}));
+var groupCounter = 0;
+
+
+
+var Schema = mongoose.Schema;
+
+var dbSchema = new Schema({
+  id:             Number,
+  name:           String,
+  type:           String,
+  parent:         String,
+  members:        Array
+});
+
+var MongooseModel = mongoose.model('messages', dbSchema, 'messages');
+
+MongooseModel.find().collection(MongooseModel.collection).where('groupCounter').gte(0).exec((err,body) => {
+  groupCounter = body.groupCounter;
+});
 
 //read
 router.get('/',bodyParser.json(), function(req, res, next) {
