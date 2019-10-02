@@ -7,7 +7,7 @@ var group = require('../models/chainModel')
 var mongoose = require('mongoose');
 
 
-var site = mongoose.model('Site', new mongoose.Schema({
+var Site = mongoose.model('Site', new mongoose.Schema({
   id:       Number,
   name:     String,
   type:     String,

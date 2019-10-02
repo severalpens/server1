@@ -4,7 +4,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var url = require('url');
 var mongoose = require('mongoose');
-var member = mongoose.model('Member', new mongoose.Schema({
+var Member = mongoose.model('Member', new mongoose.Schema({
   id:           Number,
   type:         String,
   parent:       String,
