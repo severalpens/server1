@@ -1,9 +1,20 @@
-var Chain = require('../models/chainModel');
+var models = require('../../client1/src/app/models/models.ts')
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var url = require('url');
+var group = require('../models/chainModel')
+var mongoose = require('mongoose');
 
+var Product = mongoose.model('Product', new mongoose.Schema({
+  id:             Number,
+  Name:           String,
+  Description:    String,
+  Price:          Number,
+  Units:          Number
+}));
+
+//var mongoose = require('mongoose');
 //read
 router.get('/',bodyParser.json(), function(req, res, next) {
     
