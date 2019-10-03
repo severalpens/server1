@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 var connectionStrings = require('.aaa/connectionStrings')
+var sockets = require('../routes/socket')
 /**
  * Module dependencies.
  */
@@ -20,6 +21,13 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+
+/**
+ * Create socket server.
+ */
+
+const io = require('socket.io')(server);
+sockets.connect(io,3000)
 
 /**
  * Listen on provided port, on all network interfaces.
