@@ -1,4 +1,4 @@
-var User = require('../models/userModel');
+var User = require('../mongooseModels/userModel');
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
