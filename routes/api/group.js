@@ -2,27 +2,15 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var url = require('url');
-var mongoose = require('mongoose');
-var groupCounter = 0;
-var Schema = mongoose.Schema;
+var DbCollection = require('../models/dbCollection')
 
-var dbSchema = new Schema({
-  id:             Number,
-  name:           String,
-  type:           String,
-  parent:         String,
-  members:        Array
-});
-
-var MongooseModel = mongoose.model('dbcollection', dbSchema, 'dbcollection');
-
-MongooseModel.find().collection(MongooseModel.collection).where('groupCounter').gte(0).exec((err,body) => {
+DbCollection.find().collection(DbCollection.collection).where('groupCounter').gte(0).exec((err,body) => {
   groupCounter = body.groupCounter;
 });
 
 // insert or update (upsert)
 router.post('/',bodyParser.json(), function(req, res, next) {
-    let group = new MongooseModel(req.body);
+    let group = new DbCollection(req.body);
     group.save(function(err,group){
       if(err){
         return res.status(400).json(err)
@@ -33,9 +21,9 @@ router.post('/',bodyParser.json(), function(req, res, next) {
 
 //read
 router.get('/',bodyParser.json(), function(req, res, next) {
-  const query = MongooseModel.find(); // `query` is an instance of `Query`
+  const query = DbCollection.find(); // `query` is an instance of `Query`
   query.setOptions({ lean : true });
-  query.collection(MongooseModel.collection);
+  query.collection(DbCollection.collection);
   query.where('name').equals('sport');
   query.where('type').equals('group');
   query.exec((err,body) => {

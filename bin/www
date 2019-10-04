@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+require('dotenv').config()
 var sockets = require('../routes/socket')
 /**
  * Module dependencies.
@@ -32,7 +33,7 @@ sockets.connect(io,3000)
  * Listen on provided port, on all network interfaces.
  */
 const mongoose = require('mongoose');
-const connectionString = mongoose.connect('mongodb://localhost:27017/db',{useNewUrlParser: true, useUnifiedTopology: true })
+const connectionString = 'mongodb://localhost:27017/db';
 mongoose.connect(process.env.connectionString || connectionString,{useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection;
