@@ -4,9 +4,9 @@ var bodyParser = require('body-parser');
 var url = require('url');
 var DbCollection = require('../models/dbCollection')
 
-DbCollection.find().collection(DbCollection.collection).where('groupCounter').gte(0).exec((err,body) => {
-  groupCounter = body.groupCounter;
-});
+// DbCollection.find().collection(DbCollection.collection).where('groupCounter').gte(0).exec((err,body) => {
+//   groupCounter = body.groupCounter;
+// });
 
 function processMember(body,req){
   let result = false
