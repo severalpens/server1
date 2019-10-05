@@ -1,12 +1,9 @@
-#!/usr/bin/env node
 require('dotenv').config()
-var sockets = require('../routes/socket')
 /**
  * Module dependencies.
  */
 
 var app = require('../app');
-var debug = require('debug')('server1:server');
 var http = require('http');
 
 /**
@@ -26,8 +23,6 @@ var server = http.createServer(app);
  * Create socket server.
  */
 
-const io = require('socket.io')(server);
-sockets.connect(io,3000)
 
 /**
  * Listen on provided port, on all network interfaces.

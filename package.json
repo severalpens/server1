@@ -1,12 +1,9 @@
 {
-  "name": "server1",
+  "name": "week9",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www",
-    "mon": "nodemon ./bin/www",
-    "debug": "DEBUG=server1:* npm start"
+    "start": "node ./server/server.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

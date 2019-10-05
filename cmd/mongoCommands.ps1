@@ -1,1 +1,0 @@
-﻿db.users.deleteMany({})

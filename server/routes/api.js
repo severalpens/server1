@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var groupRouter = require('./api/group') 
- var loginRouter = require('./api/login') 
+var groupRouter = require('./group') 
+ var loginRouter = require('./login') 
 // var siteRouter = require('./api/site') 
 // var channelRouter = require('./api/channel') 
  var memberRouter = require('./api/member') 
