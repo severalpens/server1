@@ -30,7 +30,7 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 const mongoose = require('mongoose');
-const connectionString = 'mongodb://localhost:27017/mydb';
+const connectionString = process.env.connectionString || 'mongodb://localhost:27017/mydb';
 mongoose.connect(process.env.connectionString || connectionString,{useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection;
