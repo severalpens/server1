@@ -4,9 +4,7 @@ var bodyParser = require('body-parser');
 var url = require('url');
 var DbCollection = require('./dbCollection')
 
-DbCollection.find().collection(DbCollection.collection).where('groupCounter').gte(0).exec((err,body) => {
-  groupCounter = body.groupCounter;
-});
+
 
 // insert or update (upsert)
 router.post('/',bodyParser.json(), function(req, res, next) {
