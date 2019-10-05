@@ -3,13 +3,12 @@ var router = express.Router();
 var bodyParser = require('body-parser');
   
 router.post('/',bodyParser.json(), function(req, res, next) {
-  res.send('api-add post reached')
+  res.send('api-getlist post reached')
 });
 
 router.get('/',bodyParser.json(), function(req, res, next) {
-  res.send('api-add get reached')
+  res.send('api-getlist get reached')
 });
 
-       
     
-module.exports = router;
+        module.exports = router;
