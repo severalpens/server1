@@ -15,7 +15,7 @@ var productSchema = new Schema({
   Units:          Number
 });
 
-var ProductModel = mongoose.model('product', dbSchema, 'product');
+var ProductModel = mongoose.model('product', productSchema, 'product');
 
 
 module.exports = ProductModel;

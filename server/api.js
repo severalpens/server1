@@ -22,7 +22,4 @@ router.get('/',(req,res) => {
     res.send("You've reached /api!")
 })
 
-
-
-
 module.exports = router;
