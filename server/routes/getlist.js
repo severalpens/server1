@@ -11,8 +11,7 @@ router.get('/',bodyParser.json(), function(req, res, next) {
   query.setOptions({ lean : true });
   query.collection(ProductModel.collection);
   query.exec((err,body) => {
-    let connectionString = process.env.connectionString || 'mongodb://localhost:27017/mydb';
-    res.send(connectionString)
+    res.send(body)
   });
   });
 
