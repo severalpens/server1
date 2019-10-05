@@ -2,6 +2,8 @@ require('dotenv').config()
 /**
  * Module dependencies.
  */
+var add = require('../mongoFunctions/add');
+
 
 var app = require('../app');
 var http = require('http');
@@ -28,7 +30,7 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 const mongoose = require('mongoose');
-const connectionString = 'mongodb://localhost:27017/db';
+const connectionString = 'mongodb://localhost:27017/mydb';
 mongoose.connect(process.env.connectionString || connectionString,{useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection;
@@ -38,6 +40,8 @@ db.once('open', function () {
   server.listen(port);
   server.on('error', onError);
   server.on('listening', onListening);
+
+
 
 })
 
