@@ -47,4 +47,11 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+var http = require('http');
+
+//app.set('port', port);
+var server = http.createServer(app);
+
+
+
+module.exports = server;
