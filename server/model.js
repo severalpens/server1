@@ -7,7 +7,6 @@ var groupCounter = 0;
 var Schema = mongoose.Schema;
 
 var productSchema = new Schema({
-  _id:            String,
   Id:             Number,
   Name:           String,
   Description:    String,

@@ -31,7 +31,7 @@ var server = http.createServer(app);
  */
 const mongoose = require('mongoose');
 const connectionString = process.env.connectionString || 'mongodb://localhost:27017/mydb';
-mongoose.connect(process.env.connectionString || connectionString,{useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(connectionString,{useNewUrlParser: true, useUnifiedTopology: true })
 
 const db = mongoose.connection;
 db.on('error',console.error.bind(console, 'connection error:'))
