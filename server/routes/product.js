@@ -16,6 +16,7 @@ router.get("/all", function(req, res, next) {
 });
 
 
+
 router.post("/", bodyParser.json(), function(req, res, next) {
   // Create an instance of model SomeModel
   var product = ProductModel.create(req.body,(err,docs) => {
